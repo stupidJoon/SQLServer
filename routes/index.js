@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const sql = require('../sql.js');
+
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  sql.select("user", (result) => {
+    res.send(result);
+  });
 });
 
 module.exports = router;
